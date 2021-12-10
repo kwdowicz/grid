@@ -13,6 +13,10 @@ func NewGrid(dim int) *Grid {
 	return &g
 }
 
+func (g Grid) Cells() []int {
+	return g.cells
+}
+
 func (g Grid) Row(i int) int {
 	return int(i / g.dim)
 }
