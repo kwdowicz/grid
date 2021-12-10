@@ -17,6 +17,10 @@ func (g Grid) Cells() []int {
 	return g.cells
 }
 
+func (g Grid) Dim() int {
+	return g.dim
+}
+
 func (g Grid) Row(i int) int {
 	return int(i / g.dim)
 }
