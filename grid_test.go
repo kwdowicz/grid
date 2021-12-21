@@ -151,8 +151,8 @@ func TestSet(t *testing.T) {
 }
 
 func TestDim(t *testing.T) {
-	g := NewGrid(3)
-	r := g.Dim()
+	grid := New(3)
+	r := grid.Dim()
 	if r != 3 {
 		t.Errorf("Dim should be 3 not: %d", r)
 	}
@@ -163,7 +163,7 @@ func TestCells(t *testing.T) {
 	g.Set(0, 1)
 	g.Set(3, 2)
 	cells := g.Cells()
-	if cells[0] != g.cells[0] || cells[3] != 2 {
-		t.Errorf("Should be: %v == %v", cells, g.cells)
+	if cells[0] != g.cells[0] || cells[1] != 0 || cells[2] != 0 || cells[3] != 2 {
+		t.Errorf("Should be: %v == %v", []int{1, 0, 0, 2}, g.cells)
 	}
 }

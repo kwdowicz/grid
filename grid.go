@@ -17,7 +17,16 @@ func NewGrid(dim int) *Grid {
 		cells: make([]T, dim*dim),
 		dim:   dim,
 	}
+	for i := range g.cells {
+		g.cells[i] = 0
+	}
 	return &g
+}
+
+// Make new Grid by providing length of one side, Grid will be dim x dim
+// If dim = 3, Grid will be 3 by 3
+func New(dim int) *Grid {
+	return NewGrid(dim)
 }
 
 // Public getter to get all cells as a single array,
