@@ -1,6 +1,8 @@
 package grid
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestRow1(t *testing.T) {
 	g := NewGrid(3)
@@ -139,23 +141,29 @@ func TestRight(t *testing.T) {
 	}
 }
 
-func TestSumAround(t *testing.T) {
-	g := NewGrid(3)
-
-	for i := range g.cells {
-		g.Set(i, i)
-	}
-
-	if g.SumAround(4) != 32 {
-		t.Errorf("Sum Around should be 32 but is %d", g.SumAround(4))
-	}
-}
-
 func TestSet(t *testing.T) {
 	g := NewGrid(3)
 	g.Set(g.Index(2, 2), 33)
 	r := g.Value(8)
 	if r != 33 {
 		t.Errorf("Index 8 is %d, instead of 33", r)
+	}
+}
+
+func TestDim(t *testing.T) {
+	g := NewGrid(3)
+	r := g.Dim()
+	if r != 3 {
+		t.Errorf("Dim should be 3 not: %d", r)
+	}
+}
+
+func TestCells(t *testing.T) {
+	g := NewGrid(2)
+	g.Set(0, 1)
+	g.Set(3, 2)
+	cells := g.Cells()
+	if cells[0] != g.cells[0] || cells[3] != 2 {
+		t.Errorf("Should be: %v == %v", cells, g.cells)
 	}
 }
